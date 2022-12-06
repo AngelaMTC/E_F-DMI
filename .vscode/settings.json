@@ -1,0 +1,7 @@
+{
+    "editor.mouseWheelScrollSensitivity": 2,
+    "editor.fastScrollSensitivity": 3,
+    "workbench.list.fastScrollSensitivity": 1,
+    "typescript.tsdk": "",
+    "terminal.integrated.fastScrollSensitivity": 1
+}
