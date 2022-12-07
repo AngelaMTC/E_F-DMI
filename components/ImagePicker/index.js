@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Image, Platform, View } from "react-native";
+import { Button, Image, Platform, View, KeyboardAvoidingView } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import {
   StyleSheet,
@@ -10,37 +10,42 @@ import {
 import { Avatar, Card, IconButton, Paragraph, Title } from "react-native-paper";
 
 export default function ImagePickerExample() {
+    createTodo = () => {
+        const {name} = this.state;
+        const list = {name};
+        this.props.addList(list)
+       
+        this.setState({name : ""})
+        this.props.closeModal();
+      
+      }
   return (
-    <View styles={styles.container}>
-        <TouchableOpacity>
-            <Text styles={styles.txtForo}>Foro de Discusion</Text>
 
-            {/* <Card.Title
-                title="Card Title"
-                subtitle="Card Subtitle"
-                left={(props) => <Avatar.Icon {...props} icon="folder" />}
-                right={(props) => <IconButton {...props} icon="more-vert" onPress={() => { }} />}
-            /> */}
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <TouchableOpacity style = {{position: "absolute", top: 64, right:32}} onPress={this.props.closeModal}>
+        <AntDesign name="close" size={24}/>
         </TouchableOpacity>
-        {/* <Card> */}
-        <Card styles={styles.containerCard}>
-            <Card.Content>
-                <Title>JavaScript</Title>
-                <Text>Jose Castillo</Text>
-                <Paragraph>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doanim id est laborum."</Paragraph>
-            </Card.Content>
-        {/* </Card> */}
-        {/* <Text></Text> */}
-        {/* <Card styles={styles.containerCard}> */}
-        <Text/>
-            <Card.Content>
-                <Title>React Native</Title>
-                <Text>Jose Castillo</Text>
-                <Paragraph>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doanim id est laborum."</Paragraph>
-            </Card.Content>
-        {/* </Card> */}
-        </Card>
-    </View>
+
+        <View style = {{alignSelf : "stretch", marginHorizontal: 32}}>
+          <Text style = {styles.title}> Crea tu Tarea : </Text>
+          <TextInput 
+          style = {styles.input} 
+          placeholder="Nombre de la Tarea"
+          onChangeText={text => this.setState({name:text})}
+          />
+
+          <View style={{flexDirection:"row", justifyContent:"space-between", marginTop:12}} ></View>
+
+
+          <TouchableOpacity style = {[styles.create, {backgroundColor: this.state.color}]} onPress={this.createTodo} >
+
+          <Text style = {{color: Colors.white, fontWeight: "600"}}> Crear! </Text>
+
+          </TouchableOpacity>
+        </View>
+
+      </KeyboardAvoidingView>
+
 );
 }
 

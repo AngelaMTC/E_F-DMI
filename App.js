@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
 import Settings from "./pages/Settings";
@@ -10,7 +10,18 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DrawerComponent } from "./components/Navigators/Drawer";
 
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from "react-native-vector-icons/Ionicons"
+
+// Calling the API:
+import {getTasks} from './api'
+
+const loadTasks = async () => {
+  const data = await getTasks()
+  console.log(data);
+}
+useEffect(()=>{
+  loadTasks()
+}, [])
 
 const drawerComponents = [
   {
