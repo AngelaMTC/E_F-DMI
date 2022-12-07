@@ -13,15 +13,15 @@ import { DrawerComponent } from "./components/Navigators/Drawer";
 import Ionicons from "react-native-vector-icons/Ionicons"
 
 // Calling the API:
-import {getTasks} from './api'
+// import {getTasks} from './api'
 
-const loadTasks = async () => {
-  const data = await getTasks()
-  console.log(data);
-}
-useEffect(()=>{
-  loadTasks()
-}, [])
+// const loadTasks = async () => {
+//   const data = await getTasks()
+//   console.log(data);
+// }
+// useEffect(()=>{
+//   loadTasks()
+// }, [])
 
 const drawerComponents = [
   {
